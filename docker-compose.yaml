@@ -1,0 +1,23 @@
+version: "3"
+services:
+  # ck-app:
+  #   container_name: ckapp
+  #   build: .
+  #   image: chiru44chiru/ckapp
+  #   ports:
+  #     - "8888:80"
+  #   volumes:
+  #     - .:/var/www/html
+  #     - /var/www/html/includes/engine/vendor/
+
+  ck-db:
+    container_name: ckdb
+    restart: always
+    build: .
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+    volumes:
+      - ./docker/db:/docker-entrypoint-initdb.d
+    image: chiru44chiru/ckdb
